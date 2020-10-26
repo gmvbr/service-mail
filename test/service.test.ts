@@ -32,8 +32,10 @@ describe('test: Service', () => {
   });
 
   after(async () => {
-    await container.resolve(Amqp).close();
-    await container.resolve(Mailer).close();
+    setTimeout(async () => {
+      await container.resolve(Amqp).close();
+      await container.resolve(Mailer).close();
+    }, 500);
   });
 
   it('expect empty body', async () => {
