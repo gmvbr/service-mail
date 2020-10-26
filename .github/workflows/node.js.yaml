@@ -12,14 +12,6 @@ jobs:
         node-version: [10.x, 12.x, 14.x]
         
     services:
-      mongodb:
-        image: mongo:3.4.3
-        ports:
-          - 27017:27017
-        env:
-          MONGO_INITDB_DATABASE: 'test'
-          MONGO_INITDB_ROOT_USERNAME: 'root'
-          MONGO_INITDB_ROOT_PASSWORD: 'test'
       rabbitmq:
         image: rabbitmq
         ports:
