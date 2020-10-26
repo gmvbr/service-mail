@@ -1,0 +1,2 @@
+# service-scaffold
+microservice template

@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq
+    networks:
+      - test
+    ports:
+      - 5672:5672
+  mongo:
+    container_name: mongo
+    volumes:
+      - 'mongo:/data/db'
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    networks:
+      - test
+    environment:
+      MONGO_INITDB_DATABASE: 'test'
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'test'
+  service:
+    build: .
+    container_name: service
+    volumes: 
+      - ./:/usr/src/app
+    networks:
+      - test
+    ports:
+      - '8080:8080'
+    links:
+      - mongo
+      - rabbitmq
+    depends_on: 
+      - mongo
+      - rabbitmq
+    environment:
+      PORT: 8080
+      HOST: 0.0.0.0
+networks:
+  test:
+    driver: bridge
+volumes:
+  mongo: null
