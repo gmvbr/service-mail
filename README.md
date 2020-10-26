@@ -21,7 +21,7 @@ AMQP_QUEUE          |  string    | queue_email
 
 # Enviar a mensagem no formato json, em UTF-8
 
-Vejas as opções de mensagem em [nodemail](https://nodemailer.com/message/)
+Vejas as opções de mensagem em [nodemailer](https://nodemailer.com/message)
 
 
 # Desenvolvimento
