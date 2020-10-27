@@ -44,7 +44,6 @@ class Service {
       }
       channel!.ack(message);
       try {
-        channel!.ack(message);
         const body = JSON.parse(message.content.toString('utf-8'));
         if (!this.validate!(body)) {
           return; // reject
