@@ -30,4 +30,4 @@ RUN npm prune --production
 #
 # Inicia o serviço
 #
-RUN npm run start
+CMD ["npm", "run", "start"]
