@@ -38,11 +38,12 @@ class Service {
       durable: false,
     });
     await channel!.consume(process.env.AMQP_QUEUE!, message => {
+      /* istanbul ignore if */
+      if (message === null) {
+        return; // reject
+      }
+      channel!.ack(message);
       try {
-        /* istanbul ignore if */
-        if (message === null) {
-          return; // reject
-        }
         channel!.ack(message);
         const body = JSON.parse(message.content.toString('utf-8'));
         if (!this.validate!(body)) {
