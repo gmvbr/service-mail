@@ -1,3 +1,2 @@
-import('./loader').then(() => {
-  console.log('Service running');
-});
+import loader from './loader';
+export default loader();
